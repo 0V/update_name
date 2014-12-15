@@ -61,7 +61,7 @@ stream.user do |obj|
 　　 ）へ  
 　  く 
 EOS
-      client.update(update_text)
+      client.update(update_text,:in_reply_to_status_id => obj.id)
       puts update_text
     end
   when Twitter::Streaming::Event
