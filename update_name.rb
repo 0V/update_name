@@ -40,7 +40,7 @@ puts "Completed"
 
 match_str = /^(?!RT).*@#{screen_name}\supdate_name\s(.+?)$/iu
 match_str2 = /^(?!RT)(.+)[（\(]\s*@#{screen_name}\s*[）\)].*$/iu
-match_shinchoku = /(進捗|しんちょく)(ダメ|だめ)です/iu
+match_shinchoku = /^(?!RT).*(進捗|しんちょく)(ダメ|だめ)です.*$/iu
 
 startup_message = "[INFO] update_name が起動したよ！ヾ(＞ヮ＜*) #{Time.now}"
 puts startup_message
@@ -62,6 +62,7 @@ stream.user do |obj|
 　  く 
 EOS
       client.update(update_text)
+      puts update_text
     end
   when Twitter::Streaming::Event
   when Twitter::Streaming::StallWarning
